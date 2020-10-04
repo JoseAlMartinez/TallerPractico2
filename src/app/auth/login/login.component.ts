@@ -21,7 +21,11 @@ export class LoginComponent implements OnInit {
     });
 
   constructor(private authSvc:AuthService, private router: Router) { }
-
+  log_google(){
+    try{this.authSvc.login_google();}
+    catch(error){console.log(error)}
+    
+  }
   ngOnInit(): void {
   }
 async onLogin(){
