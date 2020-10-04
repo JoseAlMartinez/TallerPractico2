@@ -12,8 +12,8 @@ export const environment = {
     projectId: "desafiopractico2-a6351",
     storageBucket: "desafiopractico2-a6351.appspot.com",
     messagingSenderId: "62163680768",
-    appId: "1:62163680768:web:067a8e5ab43e34146ca2e5"
-  }
+    appId: "1:62163680768:web:067a8e5ab43e34146ca2e5",
+  },
 
 };
 
