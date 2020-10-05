@@ -3,20 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-<<<<<<< Updated upstream
-  production: false,
 
-  firebaseConfig : {
-    apiKey: "AIzaSyCLqTbGL45D_E6n6X9lzbCY-4wIGEsTWJY",
-    authDomain: "desafiopractico2-a6351.firebaseapp.com",
-    databaseURL: "https://desafiopractico2-a6351.firebaseio.com",
-    projectId: "desafiopractico2-a6351",
-    storageBucket: "desafiopractico2-a6351.appspot.com",
-    messagingSenderId: "62163680768",
-    appId: "1:62163680768:web:067a8e5ab43e34146ca2e5",
-  },
-
-=======
   production: true,
   firebase: {
     apiKey: "AIzaSyBK4UIvvpcxblW8nsET_p2CEdJdtYHGrlU",
@@ -28,7 +15,6 @@ export const environment = {
     appId: "1:866154659131:web:ad04f8537667e1c7fc4b1e",
     measurementId: "G-HTP1ZLTHSM"
   }
->>>>>>> Stashed changes
 };
 
 

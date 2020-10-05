@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   log_google(){
     try{this.authSvc.login_google();}
     catch(error){console.log(error)}
+    this.router.navigate(['home']);
     
   }
   ngOnInit(): void {
