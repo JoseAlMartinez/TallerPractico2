@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductsComponent } from 'src/app/components/products/products.component';
+import { CompraComponent } from 'src/app/components/compra/compra.component';
 
 
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
   {path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule) },
   {path: 'products', component: ProductsComponent}, //ruta para crud producto
+  {path: 'compras', component: CompraComponent}, //Ruta para compra
   {path: '**', pathMatch: 'full', redirectTo: 'home'} //cualquier ruta escrita que no este definida aqui, lo manda para home 
 ];
 
