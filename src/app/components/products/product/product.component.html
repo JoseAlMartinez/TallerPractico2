@@ -7,38 +7,91 @@
             <!-- TO UPDATE -->
             <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="productService.selectedProduct.$key">
 
+
             <div class="form-group">
-                <input type="text" class="form-control" name="codigo" #codigo="ngModel"
-                    [(ngModel)]="productService.selectedProduct.codigo" placeholder="Codigo del producto">
+                <input type="text" class="form-control" name="codigo" #codigo="ngModel" required
+                    [(ngModel)]="productService.selectedProduct.codigo" placeholder="Codigo del producto" minlength="6"
+                    pattern="^[a-zA-Z]{2}[\d]{4}$">
+            </div>
+            <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)" class="alert alert-danger">
+
+                <div *ngIf="codigo.errors.required">
+                    codigo es requerido.
+                </div>
+                <div *ngIf="codigo.errors.pattern">
+                    Formato del codigo XX####
+                    Donde: X=Letras, #=Numeros
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control" name="name" #name="ngModel"
-                    [(ngModel)]="productService.selectedProduct.name" placeholder="Nombre del producto">
+                <input type="text" class="form-control" name="name" #name="ngModel" required minlength="3"
+                    [(ngModel)]="productService.selectedProduct.name" placeholder="Nombre del producto"
+                    pattern="[a-zA-Z ]{2,254}">
+            </div>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                <div *ngIf="name.errors.required">
+                    Nombre del producto es requerido.
+                </div>
+                <div *ngIf="name.errors.minlength">
+                    Minimo 3 letras
+                </div>
+                <div *ngIf="name.errors.pattern">
+                    Solo letras
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control" name="category" #category="ngModel"
-                    [(ngModel)]="productService.selectedProduct.category" placeholder="Categoria">
+                <input type="text" class="form-control" name="category" #category="ngModel" required minlength="3"
+                    [(ngModel)]="productService.selectedProduct.category" placeholder="Categoria"
+                    pattern="[a-zA-Z ]{2,254}">
+            </div>
+            <div *ngIf="category.invalid && (category.dirty || category.touched)" class="alert alert-danger">
+
+                <div *ngIf="category.errors.required">
+                    Categoria del producto es requerido.
+                </div>
+                <div *ngIf="category.errors.minlength">
+                    Minimo 3 letras
+                </div>
+                <div *ngIf="category.errors.pattern">
+                    Solo letras
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control" name="descripcion" #location="ngModel"
+                <input type="text" class="form-control" name="descripcion" #descripcion="ngModel" required minlength="5"
                     [(ngModel)]="productService.selectedProduct.descripcion" placeholder="Descripcion">
             </div>
-            
+            <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+
+                <div *ngIf="descripcion.errors.required">
+                    descripcion del producto es requerido.
+                </div>
+                <div *ngIf="descripcion.errors.minlength">
+                    Minimo 5 letras
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                     </div>
-                    <input type="number" class="form-control" name="price" #price="ngModel"
+                    <input type="number" class="form-control" name="price" #price="ngModel" required
                         [(ngModel)]="productService.selectedProduct.price" placeholder="Precio">
+                </div>
+            </div>
+            <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+
+                <div *ngIf="price.errors.required">
+                    El precio del producto es requerido.
                 </div>
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary" type="submit" [disabled]="!productForm.form.valid">
                     <i class="fas fa-plus-circle"></i> Add A Product
                 </button>
                 <button class="btn btn-secondary" type="reset" (click)="resetForm(productForm)">

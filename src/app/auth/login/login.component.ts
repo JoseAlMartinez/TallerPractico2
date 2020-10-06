@@ -30,13 +30,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 async onLogin(){
-  //console.log('Form->', this.loginForm.value);
   const { email, password } = this.loginForm.value;
   try{
-    //this.authSvc.login(email, password);
     const user = await this.authSvc.login(email, password);
-    if(user){
-      this.router.navigate(['/home']);
+    if(user.user.email == "joseamartinezb96@gmail.com" || "guadalupe@hotmail.com" || "reyalexmendoza@gmail.com"){
+      this.router.navigate(['/products']);
     }
   
   }
