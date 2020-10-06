@@ -11,29 +11,30 @@ import { Usuario } from '../models/usuario';
 })
 export class UsuarioService {
 
-    // Traer los datos de firebase
-    usuarioList: AngularFireList<any>;
+  // Traer los datos de firebase
+  usuarioList: AngularFireList<any>;
 
-    // Una variable temporal, para guardar los datos seleccionados, del tipo Product
-    selectedUsuario: Usuario = new Usuario();
-  
-    constructor(private firebase: AngularFireDatabase) { }
-  
-    // Traer todos los productos desde firebase 
-    getUsuario() { // guarda los elementos en la varible 'products'
-      return this.usuarioList = this.firebase.list('usuario');
-    }
+  // Una variable temporal, para guardar los datos seleccionados, del tipo Product
+  selectedUsuario: Usuario = new Usuario();
 
-    insertUsuario(usuario: Usuario) {
-      console.log(usuario)
-      this.usuarioList = this.firebase.list('/usuario');
-      if(usuario){
-        this.usuarioList.push({
-          nombre: usuario.nombre,
-          dui: usuario.dui,
-          email: usuario.email,
-          password: usuario.password
-        });
-      }
+  constructor(private firebase: AngularFireDatabase) { }
+
+  // Traer todos los productos desde firebase 
+  getUsuario() { // guarda los elementos en la varible 'products'
+    return this.usuarioList = this.firebase.list('usuario');
+  }
+
+  insertUsuario(usuario: Usuario) {
+    console.log(usuario)
+    this.usuarioList = this.firebase.list('/usuario');
+    if (usuario) {
+      this.usuarioList.push({
+        nombre: usuario.$nombre,
+        dui: usuario.$dui,
+        email: usuario.email,
+        password: usuario.password,
+        tipoUsuario: usuario.$tipoUsuario
+      });
     }
+  }
 }

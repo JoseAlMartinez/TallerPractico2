@@ -53,33 +53,18 @@ export class RegisterComponent implements OnInit {
         });
       });
   }
-  
+
 
   async onRegister() {
-    const {email, password } = this.registerForm.value;
-    this.n = this.usuarioList.length;
-    var res = 0;
-    for (var i = 0; i < this.n; i++)
-      if (this.x == this.usuarioList[i].dui)
-        res++
-    //console.log(res)
-    //console.log(this.usuarioList.toString);
-
-    const resultado = this.usuarioList.find(cosa => cosa.dui)
-    console.log(resultado.dui);
-
     try {
-      if (res <= 0) {
-        const user = await this.authSvc.register(email, password);
-        if (user) {
-          this.usuarioService.insertUsuario(this.registerForm.value);
-          this.router.navigate(['/home']);
-        }
-      }else{
-        this.toastr.warning('Ya esta registrada una persona con este dui', 'Advertencia');
+      const { email, password } = this.registerForm.value;  
+      const user = await this.authSvc.register(email, password);   
+      if (user) {
+        this.router.navigate(['/home']);
+        //this.usuarioService.insertUsuario(this.registerForm.value);
       }
     } catch (error) {
-      console.log(error);     
+      console.log(error);
     }
   }
 }

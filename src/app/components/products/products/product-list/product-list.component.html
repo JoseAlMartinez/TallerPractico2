@@ -7,6 +7,7 @@
         <table class="table table-sm table-hover">
             <thead class="thead-dark">
                 <tr>
+                  <th scope="col">Codigo</th>
                   <th scope="col">Nombre</th>
                   <th scope="col">Categoria</th>
                   <th scope="col">Descripcion</th>
@@ -16,7 +17,7 @@
               </thead>
             <tbody>
                 <tr *ngFor="let product of productList">
-                    <!--<td>{{product.$key}}</td> -->
+                    <td>{{product.codigo}}</td>
                     <td>{{product.name}}</td>
                     <td>{{product.category}}</td>
                     <td>{{product.descripcion}}</td>

@@ -18,10 +18,11 @@ async login_google(){
 async login(email: string, password: string){
   try{
   const result = await this.afAuth.signInWithEmailAndPassword(email, password);
+  this.toastr.success('Inicio de session satisfactorio', "Login");
   return result;
   }
   catch(error){
-    console.log(error);
+    this.toastr.error('Error grave', error);
   }
 }
 async register(email: string, password:string){

@@ -29,6 +29,7 @@ export class ProductService {
     // agregar un dato al final de la lista, como recibe un objeto del tipo Product , puede acceder a sus propiedades
     this.productList.push({
       name: product.name,
+      codigo: product.codigo,
       category: product.category,
       descripcion: product.descripcion,
       price: product.price
