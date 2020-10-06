@@ -1,24 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './../../auth/services/auth.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  selector: 'app-navarpro',
+  templateUrl: './navarpro.component.html',
+  styleUrls: ['./navarpro.component.scss'],
   providers: [AuthService]
 })
-export class NavbarComponent {
+export class NavarproComponent implements OnInit {
 
-  //public isLogged = false;
-  
   public user$: Observable<any>=this.authSvc.afAuth.user;
 
   constructor(private authSvc: AuthService, private router: Router) { }
 
-  /*async ngOnInit() {
-  }*/
+  ngOnInit(): void {
+  }
+
   async onLogout(){
     try{ 
     await this.authSvc.logout();

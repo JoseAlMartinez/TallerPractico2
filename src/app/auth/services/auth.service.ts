@@ -39,6 +39,7 @@ async register(email: string, password:string){
 async logout(){
   try{
   await this.afAuth.signOut();
+  this.toastr.success('Inicio de session satisfactorio', "Login");
   }
   catch(error){
     console.log(error); 

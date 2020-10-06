@@ -27,6 +27,7 @@ import { ProductService } from './services/product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CompraComponent } from './components/compra/compra.component';
+import { NavarproComponent } from './shared/navarpro/navarpro.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CompraComponent } from './components/compra/compra.component';
     ProductsComponent,
     ProductListComponent,
     ProductComponent,
-    CompraComponent
+    CompraComponent,
+    NavarproComponent
     //NavbarComponent
   ],
   imports: [
