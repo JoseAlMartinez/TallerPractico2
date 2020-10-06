@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, NgModel } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 // model
 import { Product } from 'src/app/models/product';
@@ -42,14 +43,14 @@ export class CompraComponent implements OnInit {
   n: number;
   dui: number;
   displayedColumns: string[] = ['Nombre', 'Dui', 'Codigo', 'Descripcion', 'Tipo Descuento', 'Precio', 'precio con Descuento'];
-
-
+  dataSource: any;
   constructor(
     private productService: ProductService,
     private usuarioService: UsuarioService,
     private authSvc: AuthService,
     public compraService: CompraService,
-    private router: Router
+    private router: Router,
+
   ) { }
 
   ngOnInit() {
@@ -74,6 +75,7 @@ export class CompraComponent implements OnInit {
           let x = element.payload.toJSON();
           x["$key"] = element.key;
           this.compraList.push(x as Compra);
+          this.dataSource = new MatTableDataSource(this.compraList);
         });
       });
   }
@@ -89,7 +91,7 @@ export class CompraComponent implements OnInit {
   onSubmit(compraForm: NgForm) {
     var res = 0;
     const found = this.productList.find(element => element.name === this.opcionSeleccionado);
-    compraForm.value.codigo = found.category;
+    compraForm.value.codigo = found.codigo;
     compraForm.value.descripcion = found.descripcion;
     compraForm.value.precio = found.price;
 
@@ -125,4 +127,11 @@ export class CompraComponent implements OnInit {
       this.compraService.insertCompra(compraForm.value);
     }
   }
+
+  applyFilter(filterValue: string){
+
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
+
+
 }

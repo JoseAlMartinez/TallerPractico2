@@ -34,7 +34,8 @@
             </div>
         </form>
 
-        <mat-table matTableExporter [dataSource]="compraList" #exporter="matTableExporter">
+            <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Buscar para facturar">
+        <mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter">
             <!-- User name Definition -->
             <ng-container matColumnDef="Nombre Cliente">
                 <mat-header-cell *matHeaderCellDef>Nombre Cliente</mat-header-cell>

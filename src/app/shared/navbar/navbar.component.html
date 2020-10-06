@@ -10,11 +10,11 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink='/'>Home</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['compras']">Compra</a>
-      </li>
     </ul>
     <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user; else login">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['compras']">Comprar</a>
+      </li>
       <li class="nav-item" *ngIf="user">
         <a href="#" class="nav-link" (click)="onLogout()">logout </a>
       </li>
